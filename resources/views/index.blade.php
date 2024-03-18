@@ -57,9 +57,10 @@
         <div style="margin-top:10%">
         <div class="row" style="gap: -2px;" >
         <div class="image__container image1" style="width:fit-content;height:fit-content;margin-right: -10px;">
-        <input type="text" value="-------" readonly>
+        <a href ="Objective" >
         <img src="Handshake.png" class = "image__container"    alt="header"   class = "image"/>
-
+        </a>
+        <img src="objectives.png" id="objectives">
         </div>
         <div class="image__container image2" style="width:fit-content;height:fit-content;margin-left: -10px;">
         <img src="search.png" class = "image__container"   alt="header"   class = "image"/>
@@ -68,15 +69,19 @@
         </div>
         <H5 style="margin-left: 12%; margin-top:-10px;margin-bottom:10%">TEAMWORK</H5>
         <div class="row" style="gap: -2px;">
+
         <div class="image__container image3" style="width:fit-content;height:fit-content;margin-top:-10%;margin-right: -10px;">
         <a href ="Project Management" >
         <img src="bulb.png" class = "image__container"   alt="header"   class = "image"/>
         </a>
-        <input type="text" value="You may also be interested in." readonly>
+        <img src="Project Manager .png" id="projectmanager">
         </div>
+
         <div class="image__container image4" style="width:fit-content;height:fit-content;margin-top:-10%; margin-left: -10px;">
+        <a href ="Settings" >
         <img src="settings.png" class = "image__container"   alt="header"   class = "image"/>
-        <input type="text" value="Settings." readonly>
+        </a>
+        <img src="P_Settings.png" id="Settings">
         </div>
         </div>
         </div>
@@ -93,7 +98,7 @@
                     <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-            <form method="POST" action={{ route('login') }} autocomplete="off" class="sign-in-form">
+            <form method="POST" action="{{ route('login') }}" autocomplete="off" class="sign-in-form">
                 @csrf
               <div class="logo">
                 <img src="./img/logo.png" />
@@ -117,8 +122,8 @@
                     autocomplete="username"
                     required
                   />
-                  <x-input-error :messages="$errors->get('email')" class="mt-2" />
                   <label>Email</label>
+                  <x-input-error :messages="$errors->get('email')" style="font-size:12px; position:absolute; color:red; top: 40px;px" />
                 </div>
 
                 <div class="input-wrap">
@@ -143,7 +148,7 @@
               </div>
             </form>
 
-            <form method="POST" action={{ route('register') }} autocomplete="off" class="sign-up-form">
+            <form method="POST" action="{{ route('register') }}" autocomplete="off" class="sign-up-form">
                 @csrf
               <div class="logo">
                 <img src="./img/logo.png" alt="easyclass" />
@@ -181,8 +186,8 @@
                     autocomplete="username"
                     required
                   />
-                  <x-input-error :messages="$errors->get('email')" class="mt-2" />
                   <label>Email</label>
+                  <x-input-error :messages="$errors->get('email')" style="font-size:12px; position:absolute; color:red; top: 40px;px"  />
                 </div>
 
                 <div class="input-wrap">
@@ -194,7 +199,7 @@
                     autocomplete="password"
                     required
                   />
-                  <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                  <x-input-error :messages="$errors->get('password')"  style="font-size:11px; position:absolute; color:red; top: 40px;px" />
                   <label>Password</label>
                 </div>
 
@@ -208,7 +213,7 @@
                       autocomplete="new-password"
                       required
                     />
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('password_confirmation')"  style="font-size:11px; position:absolute; color:red; top: 40px;px"  />
                     <label>Confirm Password</label>
                   </div>
 
@@ -222,6 +227,7 @@
               </div>
             </form>
           </div>
+          
 
          <!-- carousel slide interval and disables the automatic pause ng carousel -->
          <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"

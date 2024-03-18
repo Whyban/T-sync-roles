@@ -159,7 +159,7 @@ nav {
     transform: scale(1.3);
     }
 
-    .image1 input{
+    .image1 #objectives{
       width: 0;
       outline: none;
       border: none;
@@ -168,11 +168,11 @@ nav {
       position:fixed;
     }
 
-    .image1:hover input{
-      width: 140px;
+    .image1:hover #objectives{
+      width: 160px;
       font-weight: 500;
       position: absolute;
-      right: 140px;
+      right: 150px;
       transition: 0.8s;
       top: 40px;
       background:#4861ee ;
@@ -204,26 +204,26 @@ nav {
       }
 
 
-      .image3 input{
+      .image3 #projectmanager{
         width: 0;
         outline: none;
         border: none;
         font-weight: 500;
-        background: transparent;
+        background: #4861ee;
         position:fixed;
       }
-
-      .image3:hover input{
-        width: 140px;
+  
+      .image3:hover #projectmanager{
+        width: 160px;
         font-weight: 500;
         position: absolute;
         right: 140px;
         transition: 0.8s;
         top: 40px;
-        background:#4861ee ;
+        color:#ffffff;
         }
 
-      .image4 input{
+      .image4 #Settings{
         width: 0;
         outline: none;
         border: none;
@@ -233,7 +233,7 @@ nav {
         position:fixed;
       }
 
-      .image4:hover input{
+      .image4:hover #Settings {
         transition: 0.8s;
         width: 160px;
         font-weight: 500;
@@ -241,7 +241,6 @@ nav {
         left: 125px;
         transition: 0.8s;
         top: 50px;
-        background:#4861ee ;
         }
 
 

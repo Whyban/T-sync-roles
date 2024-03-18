@@ -84,6 +84,14 @@ Route::get('/Project Management', function () {
     return view('Project Management');
 });
 
+Route::get('/Settings', function () {
+    return view('Settings');
+});
+
+Route::get('/Objective', function () {
+    return view('Objective');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/roles', [RolesController::class, 'index'])->name('roles.index');
