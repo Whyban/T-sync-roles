@@ -98,7 +98,5 @@ Route::middleware('auth')->group(function () {
     Route::Post('/roles', [RolesController::class, 'store'])->name('roles.store');
 });
 
-Route::get('roles/{id}/edit', [RolesController::class, 'edit'])->name('roles.edit');
-Route::put('roles/{id}/edit', [RolesController::class, 'edit'])->name('roles.update');
 
 require __DIR__.'/auth.php';

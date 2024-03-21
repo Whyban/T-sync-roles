@@ -19,14 +19,14 @@ class RolesController extends Controller
             'name' => 'required|max:255|string',
             'notes' => 'required|max:255|string',
             'is_active' => 'sometimes',
-            'created_at' => 'timestamp'
+
         ]);
 
         Roles::create([
             'name' => $request->name,
             'notes' => $request->notes,
             'is_active' => $request->is_active == true ? 1:0,
-            'created_at' => $request->created_at
+
         ]);
 
         return redirect('roles')->with('status', 'Roles Created');
@@ -36,24 +36,19 @@ class RolesController extends Controller
     public function edit(int $id)
     {
         $roles = roles::findOrFail($id);
-        return view('roles.edit', compact('roles'));
+        return view('roles.edit', ['roles' => $roles]);
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $roles, Request $request)
     {
-        $request->validate([
+
+        $roles->validate([
             'name' => 'required|max:255|string',
             'notes' => 'required|max:255|string',
             'is_active' => 'sometimes',
-            'created_at' => 'timestamp'
         ]);
 
-        Roles::update([
-            'name' => $request->name,
-            'notes' => $request->notes,
-            'is_active' => $request->is_active == true ? 1:0,
-            'created_at' => $request->created_at
-        ]);
+        $request->update->all();
 
         return redirect('roles')->with('status', 'Roles Updated');
     }

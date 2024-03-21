@@ -15,6 +15,5 @@ class Roles extends Model
         'name',
         'notes',
         'is_active',
-        'created_at'
     ];
 }

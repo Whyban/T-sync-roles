@@ -160,15 +160,15 @@
                   <div class="modal-body">
                     <div class="form-group">
                       <label>Name</label>
-                      <input type="text" class="form-control" name="name"  id="name" value="{{ $roles->name }}" placeholder="Enter Your Name">
+                      <input type="text" class="form-control" name="name"  id="name" value="{{ old('name') }}" placeholder="Enter Your Name">
                     </div>
                     <div class="form-group">
                       <label>Notes</label>
-                      <textarea name="notes" class="form-control" rows="3">{{ $roles->notes }}</textarea>
+                      <textarea id="notes" name="notes" class="form-control" rows="3">{{ old('notes') }}</textarea>
                     </div>
                     <div class="form-group">
                       <label>Is Active</label>
-                      <input type="checkbox" name="is_active" id="is_active" {{ $roles->is_active == true ? checked: ''  }}>
+                      <input type="checkbox" name="is_active" id="is_active">
                     </div>
                   <div class="modal-footer justify-content-between">
                     <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>

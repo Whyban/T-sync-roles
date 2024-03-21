@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('notes');
             $table->boolean('is_active');
-            $table->timestamp('create_at')->nullable();
+            $table->timestamps();
         });
     }
 
