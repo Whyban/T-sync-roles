@@ -123,7 +123,7 @@
                     required
                   />
                   <label>Email</label>
-                  <x-input-error :messages="$errors->get('email')" style="font-size:12px; position:absolute; color:red; top: 40px;px" />
+                  <x-input-error :messages="$errors->get('email')" style="font-size:12px; position:absolute; color:red; top: 40px;" />
                 </div>
 
                 <div class="input-wrap">

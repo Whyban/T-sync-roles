@@ -32,6 +32,9 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -83,28 +86,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($roles as $item)
+                            @foreach ($roles as $roles)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->notes }}</td>
+                                    <td>{{ $roles->id }}</td>
+                                    <td>{{ $roles->name }}</td>
+                                    <td>{{ $roles->notes }}</td>
                                     <td>
-                                        @if ($item->is_active)
+                                        @if ($roles->is_active)
                                         Active
                                     @else
                                         In-Active
                                     @endif
                                     </td>
-                                    <td>{{ $item->created_at }}</td>
+                                    <td>{{ $roles->created_at }}</td>
                                     <td>
-                                       <a href="{{ url('roles/'.$item->id.'/edit') }}" class="btn btn-info btn-sm btn-edit" data-toggle="modal" data-target="#modal-edit-roles" role="button"><i class="fas fa-pencil-alt"></i>Edit</a>
+                                       <a href="javascript:void(0)" class="btn btn-info btn-sm btn-edit"
+                                        id="show_table" 
+                                        data-url = "{{ route('roles.show', $roles->id) }}"><i class="fas fa-pencil-alt"></i>Edit</a>
                                        <a href="">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-
+                  
               </div>
 
               <form method="POST" action="{{ route('roles.store') }}">
@@ -121,6 +126,7 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-group">
+
                       <label>Name</label>
                       <input type="text" class="form-control" name="name"  id="name" value="{{ old('name') }}" placeholder="Enter Your Name">
                     </div>
@@ -145,13 +151,32 @@
             </div>
             </form>
 
-            <form method="POST" action="{{ route('roles.store') }}">
-                @csrf
-                @method('POST')
-            <div class="modal fade" id="modal-edit-roles">
+            <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        /* When click show user */
+        $('body').on('click', '#show_table', function () {
+            var userURL = $(this).data('url');
+            $.get(userURL, function (data) {
+                $('#modal-edit-roles{{$roles->id}}').modal('show');
+                $('#name').text(data.name);
+                $('#notes').text(data.notes);
+            })
+        });
+
+    });
+
+</script>
+
+
+            <div class="modal fade" id="modal-edit-roles{{$roles->id}}">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
+                  <form method="POST" action="{{ route('roles.update', ['roles' => $roles] ) }}">
+                  @csrf
+                @method('put')
                     <h4 class="modal-title">Edit Roles</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
@@ -160,28 +185,31 @@
                   <div class="modal-body">
                     <div class="form-group">
                       <label>Name</label>
-                      <input type="text" class="form-control" name="name"  id="name" value="{{ old('name') }}" placeholder="Enter Your Name">
+                      <input type="text" class="form-control" name="name"  id="name" value="{{ $roles->name }}" placeholder="Enter Your Name">
+                      <x-input-error :messages="$errors->get('name')" style="font-size:12px; position:absolute; color:red; top: 40px;" />
                     </div>
                     <div class="form-group">
                       <label>Notes</label>
-                      <textarea id="notes" name="notes" class="form-control" rows="3">{{ old('notes') }}</textarea>
+                      <textarea id="notes" name="notes" class="form-control" rows="3">{{ $roles->notes}}</textarea> 
+                      <x-input-error :messages="$errors->get('notes')" style="font-size:12px; position:absolute; color:red; top: 40px;" />
                     </div>
                     <div class="form-group">
                       <label>Is Active</label>
-                      <input type="checkbox" name="is_active" id="is_active">
+                      <input type="checkbox" name="is_active" id="is_active" value="{{ $roles->is_active}}">
                     </div>
                   <div class="modal-footer justify-content-between">
                     <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
                     <input type="submit" class="btn btn-primary" id = "btnAddNewRecord" value = "Update New Record">
                   </div>
                 </div>
+                </form>
                 <!-- /.modal-content -->
               </div>
               <!-- /.modal-dialog -->
             </div>
             <!-- /.modal -->
             </div>
-            </form>
+           
       </div><!-- /.container-fluid -->
 
     </section>

@@ -10,7 +10,7 @@ class RolesController extends Controller
     public function index()
     {
         $roles = Roles::get();
-        return view('roles.index', compact('roles'));
+        return view('roles.index', ['roles' => $roles]);
     }
 
     public function store(Request $request)
@@ -33,22 +33,24 @@ class RolesController extends Controller
 
     }
 
-    public function edit(int $id)
+    public function show($id)
     {
-        $roles = roles::findOrFail($id);
-        return view('roles.edit', ['roles' => $roles]);
+        $roles = Roles::find($id);
+
+        return response()->json($roles);
     }
 
-    public function update(Request $roles, Request $request)
+    public function update(Roles $roles, Request $request)
     {
 
-        $roles->validate([
+
+       $data = $request->validate([
             'name' => 'required|max:255|string',
             'notes' => 'required|max:255|string',
             'is_active' => 'sometimes',
         ]);
 
-        $request->update->all();
+        $roles->update( $data );
 
         return redirect('roles')->with('status', 'Roles Updated');
     }

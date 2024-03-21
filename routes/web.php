@@ -96,6 +96,8 @@ Route::get('/Objective', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/roles', [RolesController::class, 'index'])->name('roles.index');
     Route::Post('/roles', [RolesController::class, 'store'])->name('roles.store');
+    Route::put('/roles{roles}', [RolesController::class, 'update'])->name('roles.update');
+    Route::get('/roles/{id}', [RolesController::class, 'show'])->name('roles.show');
 });
 
 
