@@ -10,11 +10,7 @@
   --max-width: 1200px;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 
 body {
   font-family: "Poppins", sans-serif;
@@ -71,6 +67,7 @@ nav {
 }
 
 ._container {
+  
   max-width: var(--max-width);
   margin-right: 5%;
   margin-left: 5%;
@@ -81,7 +78,6 @@ nav {
 }
 
 .content__container {
-  display: flex;
   height:min-content;
   margin-top:20%;
   width: max-content;

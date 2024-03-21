@@ -38,7 +38,7 @@
       </ul>
     </nav>
 </header>
-    <section class="_container">
+    <div class="_container">
       <div class="content__container" >
         <h1>
         Streamline Workflows,<br />
@@ -282,7 +282,7 @@
       </div>
       </div>
                 </div>
-</section>
+</div>
    <!-- Javascript file -->
 
    <script src="app.js"></script>

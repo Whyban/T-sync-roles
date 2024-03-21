@@ -39,9 +39,8 @@
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="dist/img/sync-removebg-preview.ico" alt="AdminLTELogo" height="200" width="200">
   </div>
-
     <!-- Main content -->
-    <section class="content">
+    <section class="content" style="margin: 2% 3%;">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
